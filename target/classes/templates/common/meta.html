@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="meta(title)">
+    <title th:replace="${title}"></title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="个人博客,危锦辉个人博客,个人博客模板,个人小站，危锦辉" />
+    <meta name="description" content="危锦辉个人博客，是一个喜欢研究技术，分享技术的程序猿，共享智慧，分享喜悦" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/m.css" rel="stylesheet">
+    <link href="css/history.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <script src="js/modernizr.js"></script>
+    <![endif]-->
+    <script>
+        window.onload = function ()
+        {
+            var oH2 = document.getElementsByTagName("h2")[0];
+            var oUl = document.getElementsByTagName("ul")[0];
+            oH2.onclick = function ()
+            {
+                var style = oUl.style;
+                style.display = style.display == "block" ? "none" : "block";
+                oH2.className = style.display == "block" ? "open" : ""
+            }
+        }
+    </script>
+</head>
+</html>

@@ -1,0 +1,56 @@
+﻿<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/meta :: meta(~{::title})">
+  <title>关于我_危锦辉个人博客 - 一个喜欢研究技术的程序猿的个人博客网站</title>
+</head>
+<body>
+<div th:replace="common/header :: header"></div>
+<article>
+  <h1 class="t_nav">
+    <span>人生一世，草木一秋，皆是过程，美与可爱，有心皆懂。</span>
+    <a href="/" class="n1">网站首页</a>
+    <a href="/" class="n2">留言</a>
+  </h1>
+  <div class="ab_box">
+    <div class="leftbox">
+      <div class="newsview">
+        <div class="news_infos">
+          <form action="" method="post" class="bootstrap-frm">
+            <h1>给我留言
+              <span>欢迎大家给我留言，可以尽情吐槽和反馈。</span>
+            </h1>
+            <label>
+              <span>姓名 :</span>
+              <input id="name" type="text" name="name" placeholder="您的称呼" />
+            </label>
+            <label>
+              <span>邮箱 :</span>
+              <input id="email" type="email" name="email" placeholder="您的邮箱，方便联系" />
+            </label>
+
+            <label>
+              <span>信息 :</span>
+              <textarea id="message" name="message" placeholder="吐槽内容"></textarea>
+            </label>
+            <label>
+              <span>是否需要回复 :</span>
+                <select name="selection">
+                <option value="1">需要回复</option>
+                <option value="0">只是想吐槽</option>
+              </select>
+            </label>
+            <label>
+              <span>&nbsp;</span>
+              <input type="button" class="button" value="提交" />
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div th:replace="common/info :: info"></div>
+  </div>
+</article>
+<div th:replace="common/footer :: footer"></div>
+<script src="js/nav.js"></script>
+</body>
+</html>

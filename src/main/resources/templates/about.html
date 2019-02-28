@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/meta :: meta(~{::title})">
+  <title>关于我_危锦辉个人博客 - 一个喜欢研究技术的程序猿的个人博客网站</title>
+</head>
+<body>
+<div th:replace="common/header :: header"></div>
+<article>
+  <h1 class="t_nav">
+    <span>当你的实力不足以撑起你的野心时，你就应该静下心来好好学习。</span>
+    <a href="/" class="n1">网站首页</a>
+    <a href="about" class="n2">关于我</a>
+  </h1>
+  <div class="ab_box">
+    <div class="leftbox">
+      <div class="newsview">
+        <div class="news_infos">
+          <p>危锦辉，男，一个90后草根站长！16年入行。一直潜心研究Java Web技术，一边工作一边积累经验，分享一些个人技术文章，以及喜欢的一些文章。<br />
+            <br />
+            之前一直在CSDN分享自己的博客，后来决定自己搭建一个自己的小站，打算以后长期维护。也希望可以结交到更多的志同道合的朋友。<br />
+            <br />
+            个人平时比较喜欢专研一些新的技术，对前端和后端都有研究，并把心得和朋友一起分享。<br />
+            <br />
+            人生格言：当你的实力不足以撑起你的野心，你就应该静下心来好好学习。</p>
+          <br />
+          <h2>About my blog</h2>
+          &nbsp;
+          <p>域 名：www.wjhsmart.vip 创建于2019年01月06日&nbsp;</p>
+          <br />
+          <p>服务器：阿里云服务器&nbsp;&nbsp;<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=8smrzoqa&amp;productCode=vm" target="_blank"><span style="color:#FF0000;"><strong>前往阿里云官网购买&gt;&gt;</strong></span></a></p>
+          <br />
+          <p>备案号：赣ICP备19000931号-1</p>
+        </div>
+      </div>
+    </div>
+    <div th:replace="common/info :: info"></div>
+  </div>
+</article>
+<div th:replace="common/footer :: footer"></div>
+<script src="js/nav.js"></script>
+</body>
+</html>

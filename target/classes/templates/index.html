@@ -1,0 +1,112 @@
+﻿<!Doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/meta :: meta(~{::title})">
+  <title>首页_危锦辉个人博客 - 一个喜欢研究技术的程序猿的个人博客网站</title>
+</head>
+<body>
+<!--头部菜单-->
+<div th:replace="common/header :: header"></div>
+<div class="picshow">
+  <ul>
+    <li><a href="/"><i><img src="images/b01.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="images/b02.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="images/b03.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="images/b04.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+    <li><a href="/"><i><img src="images/b05.jpg"></i>
+      <div class="font">
+        <h3>个人博客模板《早安》</h3>
+      </div>
+      </a></li>
+  </ul>
+</div>
+<article>
+  <div class="blogs">
+    <li> <span class="blogpic"><a href="/"><img src="images/text02.jpg"></a></span>
+      <h3 class="blogtitle"><a href="/">陌上花开，可缓缓归矣</a></h3>
+      <div class="bloginfo">
+        <p>用最简单的代码，实现瀑布流布局，没有繁琐的css，没有jq，只需要做到以下就可以实现瀑布流的效果。思路很简单，看成是三列布局，分别用三个ul来调用。帝国cms列表模板，...</p>
+      </div>
+      <div class="autor"><span class="lm"><a href="/" title="CSS3|Html5" target="_blank" class="classname">CSS3|Html5</a></span><span class="dtime">2018-05-04</span><span class="viewnum">浏览（<a href="/">0</a>）</span><span class="readmore"><a href="/">阅读原文</a></span></div>
+    </li>
+  </div>
+  <div class="sidebar">
+    <div class="about">
+      <div class="avatar"> <img th:src="@{${info.headImg}}" src="images/default_avatar.jpg" alt=""> </div>
+      <p class="abname"><span th:text="${info.netName}">默认网名</span> | <span th:text="${info.name}">默认名称</span></p>
+      <p class="abposition"><span th:text="${info.vocation}">默认职业</span></p>
+      <div class="abtext"> <span th:text="${info.desc}">默认说明。 </span></div>
+    </div>
+    <!--搜索框-->
+    <div th:replace="common/search :: search"></div>
+    <div class="cloud">
+      <h2 class="hometitle">标签云</h2>
+      <ul>
+        <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
+      </ul>
+    </div>
+    <div class="paihang">
+      <h2 class="hometitle">点击排行</h2>
+      <ul>
+        <li><b><a href="/download/div/2015-04-10/746.html" target="_blank">【活动作品】柠檬绿兔小白个人博客模板30...</a></b>
+          <p><i><img src="images/t02.jpg"></i>展示的是首页html，博客页面布局格式简单，没有复杂的背景，色彩局部点缀，动态的幻灯片展示，切换卡，标...</p>
+        </li>
+        <li><b><a href="/download/div/2014-02-19/649.html" target="_blank"> 个人博客模板（2014草根寻梦）30...</a></b>
+          <p><i><img src="images/b03.jpg"></i>2014第一版《草根寻梦》个人博客模板简单、优雅、稳重、大气、低调。专为年轻有志向却又低调的草根站长设...</p>
+        </li>
+      </ul>
+    </div>
+    <div class="paihang">
+      <h2 class="hometitle">站长推荐</h2>
+      <ul>
+        <li><b><a href="/download/div/2015-04-10/746.html" target="_blank">【活动作品】柠檬绿兔小白个人博客模板30...</a></b>
+          <p><i><img src="images/t02.jpg"></i>展示的是首页html，博客页面布局格式简单，没有复杂的背景，色彩局部点缀，动态的幻灯片展示，切换卡，标...</p>
+        </li>
+        <li><b><a href="/download/div/2014-02-19/649.html" target="_blank"> 个人博客模板（2014草根寻梦）30...</a></b>
+          <p><i><img src="images/b03.jpg"></i>2014第一版《草根寻梦》个人博客模板简单、优雅、稳重、大气、低调。专为年轻有志向却又低调的草根站长设...</p>
+        </li>
+      </ul>
+    </div>
+    <div class="links">
+      <h2 class="hometitle">社交信息</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/Wjhsmart" title="GitHub" target="_blank">
+            <img src="images/github.png" style="width: 40px;" />
+          </a>
+        </li>
+        <li>
+          <a href="https://blog.csdn.net/Wjhsmart" title="CSDN" target="_blank">
+            <img src="images/csdn.png" style="width: 40px;" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="weixin">
+      <h2 class="hometitle">官方微信</h2>
+      <ul>
+        <img src="images/wx.jpg">
+      </ul>
+    </div>
+  </div>
+</article>
+<div class="blank"></div>
+<div th:replace="common/footer :: footer"></div>
+<script src="js/nav.js"></script>
+</body>
+</html>

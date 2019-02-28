@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <div class="rightbox" th:fragment="info">
+            <div class="aboutme">
+                <h2 class="hometitle">关于我</h2>
+                <div class="avatar"> <img th:src="@{${info.headImg}}" src="images/default_avatar.jpg"> </div>
+                <div class="ab_con">
+                    <p>网名：<span th:text="${info.netName}">默认网名</span> | <span th:text="${info.name}">默认名称</span></p>
+                    <p>职业：<span th:text="${info.vocation}">默认职业</span> </p>
+                    <p>个人微信：<span th:text="${info.wechat}">默认微信</span></p>
+                    <p>邮箱：<span th:text="${info.email}">默认邮箱</span></p>
+                </div>
+            </div>
+            <div class="weixin">
+                <h2 class="hometitle">微信关注</h2>
+                <ul>
+                    <img th:src="@{${info.wechatCode}}" src="images/wx.jpg">
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

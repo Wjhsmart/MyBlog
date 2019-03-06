@@ -149,4 +149,15 @@ public class StringUtils {
         return sb.toString();
     }
 
+    /**
+     * 判断字符串是否为空 null和空字符串判断
+     * @param val 需要判断的字符串
+     * @return
+     */
+    public static boolean isEmpty(String val) {
+        if (null == val || "".equals(val)) {
+            return true;
+        }
+        return false;
+    }
 }

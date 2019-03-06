@@ -1,0 +1,12 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <div class="cloud" th:fragment="label">
+            <h2 class="hometitle">分类标签</h2>
+            <ul>
+                <a th:each="articleCategory,articleCategoryStat : ${articleCategoryVOList}" th:href="@{/list(pageNo=${pageNo},categoryId=${articleCategory.id})}">
+                    <span th:text="${articleCategory.title}">默认标签</span>
+                </a>
+            </ul>
+        </div>
+    </body>
+</html>

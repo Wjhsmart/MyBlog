@@ -16,5 +16,5 @@ public interface InfoService extends BaseService {
      * 获取系统信息并缓存
      * @return
      */
-    InfoDTO getInfo();
+    InfoDTO catchGetInfo();
 }

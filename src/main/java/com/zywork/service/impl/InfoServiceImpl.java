@@ -44,7 +44,7 @@ public class InfoServiceImpl extends AbstractBaseService implements InfoService 
     }
 
     @Override
-    public InfoDTO getInfo() {
+    public InfoDTO catchGetInfo() {
         InfoDTO infoDTO = new InfoDTO();
         if (infoRedisUtils.exists()) {
             infoDTO = BeanUtils.copy(infoRedisUtils.get(), InfoDTO.class);

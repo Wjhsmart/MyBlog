@@ -24,6 +24,7 @@ h3.blogtitle { line-height: 30px; height: 30px; margin: 10px 0; }
 .lm { background: url(../images/newsbg01.png) no-repeat left center }
 .dtime { background: url(../images/newsbg02.png) no-repeat left center }
 .viewnum { background: url(../images/newsbg04.png) no-repeat left center }
+.commentnum { background: url(../images/newsbg05.png) no-repeat left center;background-size: 15px; }
 .pingl { background: url(../images/newsbg03.png) no-repeat left center }
 .blogpic img { width: 100% }
 .bloginfo p { color: #888; line-height: 24px }
@@ -235,5 +236,9 @@ h3.blogtitle { line-height: 30px; height: 30px; margin: 10px 0; }
      color: #333;
      background-color: #EBEBEB;
      border-color: #ADADAD;
+ }
+ .category {
+     font-weight: bold;
+     margin-top: 20px;
  }
 

@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <div class="paihang" th:fragment="click">
+            <h2 class="hometitle">点击排行</h2>
+            <ul>
+                <li th:each="article,articleStat : ${articleClickList}">
+                    <b>
+                        <a href="/">【
+                            <span th:text="${article.categoryName}">默认分类</span>】
+                            <span th:text="${article.title}">默认标题</span>
+                        </a>
+                    </b>
+                    <p>
+                        <i>
+                            <img th:src="@{${article.coverImg}}" src="images/text01.jpg">
+                        </i>
+                        <span th:text="${#strings.substring(article.summary,0,50) + ',...'}">默认简介</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>

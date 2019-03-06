@@ -124,5 +124,14 @@ public class RedisUtils {
         return unlocked == null ? false : unlocked;
     }
 
+    /**
+     * 清空数据库
+     * @param redisTemplate
+     * @return
+     */
+    public static boolean empty(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.delete("*");
+    }
+
 
 }

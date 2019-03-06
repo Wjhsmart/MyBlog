@@ -37,6 +37,7 @@ public class PagerDTO {
         this.rows = rows;
     }
 
+    @Override
     public String toString() {
         return "PagerDTO{total=" + this.total + ", rows=" + this.rows + '}';
     }

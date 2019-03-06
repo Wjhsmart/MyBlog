@@ -11,23 +11,59 @@
     <a href="/" class="n1">网站首页</a>
     <a href="list" class="n2">学无止境</a>
   </h1>
+  <div class="category" th:if="${categoryId != 0}" th:text="${categoryName}">默认分类</div>
   <div class="blogs">
     <div class="mt20"></div>
-    <li> <span class="blogpic"><a href="/"><img src="images/text02.jpg"></a></span>
-      <h3 class="blogtitle"><a href="/">陌上花开，可缓缓归矣</a></h3>
+    <li th:each="article,articleStat : ${pageVO.rows}">
+      <span class="blogpic">
+        <a th:href="@{/detail(id=${article.id})}">
+          <img th:src="@{${article.coverImg}}" src="images/text01.jpg">
+        </a>
+      </span>
+      <h3 class="blogtitle"><a th:href="@{/detail(id=${article.id})}" th:text="${article.title}">默认标题</a></h3>
       <div class="bloginfo">
-        <p>用最简单的代码，实现瀑布流布局，没有繁琐的css，没有jq，只需要做到以下就可以实现瀑布流的效果。思路很简单，看成是三列布局，分别用三个ul来调用。帝国cms列表模板，...</p>
+        <p>
+          <span th:text="${article.summary}">默认简介</span>
+        </p>
       </div>
-      <div class="autor"><span class="lm"><a href="/" title="CSS3|Html5" target="_blank" class="classname">CSS3|Html5</a></span><span class="dtime">2018-05-04</span><span class="viewnum">浏览（<a href="/">0</a>）</span><span class="readmore"><a href="/">阅读原文</a></span></div>
-    </li>
-    <li> <span class="blogpic"><a href="/"><img src="images/text01.jpg"></a></span>
-      <h3 class="blogtitle"><a href="/">网页中图片属性固定宽度，如何用js改变大小</a></h3>
-      <div class="bloginfo">
-        <p>用最简单的代码，实现瀑布流布局，没有繁琐的css，没有jq，只需要做到以下就可以实现瀑布流的效果。思路很简单，看成是三列布局，分别用三个ul来调用。帝国cms列表模板，...</p>
+      <div class="autor">
+        <span class="lm">
+          <a href="/" th:title="${article.categoryName}" class="classname" th:text="${article.categoryName}">默认类型</a>
+        </span>
+        <span class="dtime" th:text="${#dates.format(article.updateTime, 'yyyy-MM-dd')}">发布时间</span>
+        <span class="viewnum">浏览（<a href="/" th:text="${article.viewCount}">0</a>）</span>
+        <span class="commentnum">评论（<a href="/" th:text="${article.commentCount}">0</a>）</span>
+        <span class="readmore">
+          <a href="/">阅读原文</a>
+        </span>
       </div>
-      <div class="autor"><span class="lm"><a href="/" title="CSS3|Html5" target="_blank" class="classname">CSS3|Html5</a></span><span class="dtime">2018-05-04</span><span class="viewnum">浏览（<a href="/">0</a>）</span><span class="readmore"><a href="/">阅读原文</a></span></div>
     </li>
-    <div class="pagelist"><a title="Total record">&nbsp;<b>45</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;<a href="/download/index_2.html">下一页</a>&nbsp;<a href="/download/index_2.html">尾页</a></div>
+    <div class="pagelist" th:if="${pageTotal > 1}">
+      <a th:if="${pageNo != 1}" th:href="@{/list(pageNo=1,categoryId=${categoryId})}">首页</a>&nbsp;
+      <span th:if="${pageNo > 1}" th:switch="${pageNo}">
+        <span th:case="1">
+          <a th:href="@{/list(pageNo=1,categoryId=${categoryId})}">上一页</a>
+        </span>
+        <span th:case="*">
+          <a th:href="@{/list(pageNo=${pageNo - 1},categoryId=${categoryId})}">上一页</a>
+        </span>
+      </span>
+      <span th:if="${pageNo != pageTotal}" th:switch="${pageNo}">
+        <span th:case="${pageTotal}">
+          <a th:href="@{/list(pageNo=${pageTotal},categoryId=${categoryId})}">下一页</a>
+        </span>
+        <span th:case="*">
+          <a th:href="@{/list(pageNo=${pageNo + 1},categoryId=${categoryId})}">下一页</a>
+        </span>
+      </span>
+      <span th:if="${pageNo != pageTotal}">
+        <a th:href="@{/list(pageNo=${pageTotal},categoryId=${categoryId})}">尾页</a>
+      </span>
+      &nbsp;
+      <span>
+        当前第&nbsp;<span th:text="${pageNo}"></span>&nbsp;页，共&nbsp;<span th:text="${pageTotal}"></span>&nbsp;页
+      </span>
+    </div>
   </div>
   <div th:replace="common/rightNav :: rightNav"></div>
 </article>

@@ -9,39 +9,39 @@
   <h1 class="t_nav">
     <span>人生一世，草木一秋，皆是过程，美与可爱，有心皆懂。</span>
     <a href="/" class="n1">网站首页</a>
-    <a href="/" class="n2">留言</a>
+    <a href="gbook" class="n2">留言</a>
   </h1>
   <div class="ab_box">
     <div class="leftbox">
       <div class="newsview">
         <div class="news_infos">
-          <form action="" method="post" class="bootstrap-frm">
+          <form action="" id="leaveWorkForm" method="post" class="bootstrap-frm">
             <h1>给我留言
               <span>欢迎大家给我留言，可以尽情吐槽和反馈。</span>
             </h1>
             <label>
-              <span>姓名 :</span>
+              <span><span style="color:red;">*</span>姓名 :</span>
               <input id="name" type="text" name="name" placeholder="您的称呼" />
             </label>
             <label>
-              <span>邮箱 :</span>
+              <span><span style="color:red;">*</span>邮箱 :</span>
               <input id="email" type="email" name="email" placeholder="您的邮箱，方便联系" />
             </label>
 
             <label>
-              <span>信息 :</span>
+              <span><span style="color:red;">*</span>信息 :</span>
               <textarea id="message" name="message" placeholder="吐槽内容"></textarea>
             </label>
             <label>
               <span>是否需要回复 :</span>
-                <select name="selection">
+                <select name="replyFlag" id="reply">
                 <option value="1">需要回复</option>
                 <option value="0">只是想吐槽</option>
               </select>
             </label>
             <label>
               <span>&nbsp;</span>
-              <input type="button" class="button" value="提交" />
+              <input type="button" id="submitBtn" class="button" onclick="submitLeaveWord()" value="提交" />
             </label>
           </form>
         </div>
@@ -52,5 +52,57 @@
 </article>
 <div th:replace="common/footer :: footer"></div>
 <script src="js/nav.js"></script>
+<script type="text/javascript">
+  function submitLeaveWord() {
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var message = $("#message").val();
+    var replyFlag = $("#reply").val();
+    if (name == "" || name == undefined) {
+      var txt=  "请输入您的称呼";
+      window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
+      return;
+    }
+    if (email == "" || email == undefined) {
+      var txt=  "请输入您的联系方式";
+      window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
+      return;
+    }
+    if (message == "" || message == undefined) {
+      var txt=  "请输入您要留言的信息";
+      window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
+      return;
+    }
+    var params = {
+      "nickname" : name,
+      "email" : email,
+      "message" : message,
+      "replyFlag" : replyFlag
+    }
+    $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      url: '/leave-word/user/save',
+      data: JSON.stringify(params),
+      contentType: "application/json",
+      success: function(data) {
+        if (data.code != 1001) {
+          window.wxc.xcConfirm(data.message, window.wxc.xcConfirm.typeEnum.error);
+          return;
+        }
+        $("#name").val('');
+        $("#email").val('');
+        $("#message").val('');
+        if (replyFlag == 1) {
+          window.wxc.xcConfirm("感谢您的留言，站长会认真阅读，如有需要，会及时给您反馈的", window.wxc.xcConfirm.typeEnum.ok);
+        } else {
+          window.wxc.xcConfirm("感谢您的吐槽，站长会认真改进的", window.wxc.xcConfirm.typeEnum.ok);
+        }
+
+      }
+    })
+
+  }
+</script>
 </body>
 </html>

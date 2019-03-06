@@ -37,12 +37,29 @@
 </div>
 <article>
   <div class="blogs">
-    <li> <span class="blogpic"><a href="/"><img src="images/text02.jpg"></a></span>
-      <h3 class="blogtitle"><a href="/">陌上花开，可缓缓归矣</a></h3>
+    <li th:each="article,articleStat : ${articleIndexList}">
+      <span class="blogpic">
+        <a href="/">
+          <img th:src="@{${article.coverImg}}" src="images/text01.jpg">
+        </a>
+      </span>
+      <h3 class="blogtitle"><a href="/" th:text="${article.title}">默认标题</a></h3>
       <div class="bloginfo">
-        <p>用最简单的代码，实现瀑布流布局，没有繁琐的css，没有jq，只需要做到以下就可以实现瀑布流的效果。思路很简单，看成是三列布局，分别用三个ul来调用。帝国cms列表模板，...</p>
+        <p>
+          <span th:text="${#strings.substring(article.summary,0,100) + ',...'}">默认简介</span>
+        </p>
       </div>
-      <div class="autor"><span class="lm"><a href="/" title="CSS3|Html5" target="_blank" class="classname">CSS3|Html5</a></span><span class="dtime">2018-05-04</span><span class="viewnum">浏览（<a href="/">0</a>）</span><span class="readmore"><a href="/">阅读原文</a></span></div>
+      <div class="autor">
+        <span class="lm">
+          <a href="/" th:title="${article.categoryName}" class="classname" th:text="${article.categoryName}">默认类型</a>
+        </span>
+        <span class="dtime" th:text="${#dates.format(article.updateTime, 'yyyy-MM-dd')}">发布时间</span>
+        <span class="viewnum">浏览（<a href="/" th:text="${article.viewCount}">0</a>）</span>
+        <span class="commentnum">评论（<a href="/" th:text="${article.commentCount}">0</a>）</span>
+        <span class="readmore">
+          <a href="/">阅读原文</a>
+        </span>
+      </div>
     </li>
   </div>
   <div class="sidebar">
@@ -54,34 +71,12 @@
     </div>
     <!--搜索框-->
     <div th:replace="common/search :: search"></div>
-    <div class="cloud">
-      <h2 class="hometitle">标签云</h2>
-      <ul>
-        <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
-      </ul>
-    </div>
-    <div class="paihang">
-      <h2 class="hometitle">点击排行</h2>
-      <ul>
-        <li><b><a href="/download/div/2015-04-10/746.html" target="_blank">【活动作品】柠檬绿兔小白个人博客模板30...</a></b>
-          <p><i><img src="images/t02.jpg"></i>展示的是首页html，博客页面布局格式简单，没有复杂的背景，色彩局部点缀，动态的幻灯片展示，切换卡，标...</p>
-        </li>
-        <li><b><a href="/download/div/2014-02-19/649.html" target="_blank"> 个人博客模板（2014草根寻梦）30...</a></b>
-          <p><i><img src="images/b03.jpg"></i>2014第一版《草根寻梦》个人博客模板简单、优雅、稳重、大气、低调。专为年轻有志向却又低调的草根站长设...</p>
-        </li>
-      </ul>
-    </div>
-    <div class="paihang">
-      <h2 class="hometitle">站长推荐</h2>
-      <ul>
-        <li><b><a href="/download/div/2015-04-10/746.html" target="_blank">【活动作品】柠檬绿兔小白个人博客模板30...</a></b>
-          <p><i><img src="images/t02.jpg"></i>展示的是首页html，博客页面布局格式简单，没有复杂的背景，色彩局部点缀，动态的幻灯片展示，切换卡，标...</p>
-        </li>
-        <li><b><a href="/download/div/2014-02-19/649.html" target="_blank"> 个人博客模板（2014草根寻梦）30...</a></b>
-          <p><i><img src="images/b03.jpg"></i>2014第一版《草根寻梦》个人博客模板简单、优雅、稳重、大气、低调。专为年轻有志向却又低调的草根站长设...</p>
-        </li>
-      </ul>
-    </div>
+    <!--分类标签-->
+    <div th:replace="common/label :: label"></div>
+    <!--点击排行-->
+    <div th:replace="common/click :: click"></div>
+    <!--站长推荐-->
+    <div th:replace="common/recommend :: recommend"></div>
     <div class="links">
       <h2 class="hometitle">社交信息</h2>
       <ul>
@@ -97,12 +92,8 @@
         </li>
       </ul>
     </div>
-    <div class="weixin">
-      <h2 class="hometitle">官方微信</h2>
-      <ul>
-        <img src="images/wx.jpg">
-      </ul>
-    </div>
+    <!--官方微信-->
+    <div th:replace="common/wechat :: wechat"></div>
   </div>
 </article>
 <div class="blank"></div>

@@ -378,6 +378,118 @@
 		
     </sql>
 
+	<sql id="user_query_where_clause">
+		<if test="query != null and query.id != null">
+			and a.id = #{query.id}
+		</if>
+		<if test="query != null and query.idMin != null and query.idMax == null">
+			and a.id <![CDATA[ >= ]]> #{query.idMin}
+		</if>
+		<if test="query != null and query.idMin == null and query.idMax != null">
+			and a.id <![CDATA[ <= ]]> #{query.idMax}
+		</if>
+		<if test="query != null and query.idMin != null and query.idMax != null">
+			and a.id <![CDATA[ >= ]]> #{query.idMin} and id <![CDATA[ <= ]]> #{query.idMax}
+		</if>
+		<if test="query != null and query.categoryId != null">
+			and a.category_id = #{query.categoryId}
+		</if>
+		<if test="query != null and query.categoryIdMin != null and query.categoryIdMax == null">
+			and a.category_id <![CDATA[ >= ]]> #{query.categoryIdMin}
+		</if>
+		<if test="query != null and query.categoryIdMin == null and query.categoryIdMax != null">
+			and a.category_id <![CDATA[ <= ]]> #{query.categoryIdMax}
+		</if>
+		<if test="query != null and query.categoryIdMin != null and query.categoryIdMax != null">
+			and a.category_id <![CDATA[ >= ]]> #{query.categoryIdMin} and category_id <![CDATA[ <= ]]> #{query.categoryIdMax}
+		</if>
+		<if test="query != null and query.title != null and query.title != ''">
+			and a.title like concat('%', #{query.title}, '%')
+		</if>
+		<if test="query != null and query.coverImg != null and query.coverImg != ''">
+			and a.cover_img like concat('%', #{query.coverImg}, '%')
+		</if>
+		<if test="query != null and query.summary != null and query.summary != ''">
+			and a.summary like concat('%', #{query.summary}, '%')
+		</if>
+		<if test="query != null and query.content != null and query.content != ''">
+			and a.content like concat('%', #{query.content}, '%')
+		</if>
+		<if test="query != null and query.viewCount != null">
+			and a.view_count = #{query.viewCount}
+		</if>
+		<if test="query != null and query.viewCountMin != null and query.viewCountMax == null">
+			and a.view_count <![CDATA[ >= ]]> #{query.viewCountMin}
+		</if>
+		<if test="query != null and query.viewCountMin == null and query.viewCountMax != null">
+			and a.view_count <![CDATA[ <= ]]> #{query.viewCountMax}
+		</if>
+		<if test="query != null and query.viewCountMin != null and query.viewCountMax != null">
+			and a.view_count <![CDATA[ >= ]]> #{query.viewCountMin} and view_count <![CDATA[ <= ]]> #{query.viewCountMax}
+		</if>
+		<if test="query != null and query.commentCount != null">
+			and a.comment_count = #{query.commentCount}
+		</if>
+		<if test="query != null and query.commentCountMin != null and query.commentCountMax == null">
+			and a.comment_count <![CDATA[ >= ]]> #{query.commentCountMin}
+		</if>
+		<if test="query != null and query.commentCountMin == null and query.commentCountMax != null">
+			and a.comment_count <![CDATA[ <= ]]> #{query.commentCountMax}
+		</if>
+		<if test="query != null and query.commentCountMin != null and query.commentCountMax != null">
+			and a.comment_count <![CDATA[ >= ]]> #{query.commentCountMin} and comment_count <![CDATA[ <= ]]> #{query.commentCountMax}
+		</if>
+		<if test="query != null and query.recommend != null">
+			and a.recommend = #{query.recommend}
+		</if>
+		<if test="query != null and query.recommendMin != null and query.recommendMax == null">
+			and a.recommend <![CDATA[ >= ]]> #{query.recommendMin}
+		</if>
+		<if test="query != null and query.recommendMin == null and query.recommendMax != null">
+			and a.recommend <![CDATA[ <= ]]> #{query.recommendMax}
+		</if>
+		<if test="query != null and query.recommendMin != null and query.recommendMax != null">
+			and a.recommend <![CDATA[ >= ]]> #{query.recommendMin} and recommend <![CDATA[ <= ]]> #{query.recommendMax}
+		</if>
+		<if test="query != null and query.createTime != null">
+			and a.create_time = #{query.createTime}
+		</if>
+		<if test="query != null and query.createTimeMin != null and query.createTimeMax == null">
+			and a.create_time <![CDATA[ >= ]]> #{query.createTimeMin}
+		</if>
+		<if test="query != null and query.createTimeMin == null and query.createTimeMax != null">
+			and a.create_time <![CDATA[ <= ]]> #{query.createTimeMax}
+		</if>
+		<if test="query != null and query.createTimeMin != null and query.createTimeMax != null">
+			and a.create_time <![CDATA[ >= ]]> #{query.createTimeMin} and create_time <![CDATA[ <= ]]> #{query.createTimeMax}
+		</if>
+		<if test="query != null and query.updateTime != null">
+			and a.update_time = #{query.updateTime}
+		</if>
+		<if test="query != null and query.updateTimeMin != null and query.updateTimeMax == null">
+			and a.update_time <![CDATA[ >= ]]> #{query.updateTimeMin}
+		</if>
+		<if test="query != null and query.updateTimeMin == null and query.updateTimeMax != null">
+			and a.update_time <![CDATA[ <= ]]> #{query.updateTimeMax}
+		</if>
+		<if test="query != null and query.updateTimeMin != null and query.updateTimeMax != null">
+			and a.update_time <![CDATA[ >= ]]> #{query.updateTimeMin} and update_time <![CDATA[ <= ]]> #{query.updateTimeMax}
+		</if>
+		<if test="query != null and query.isActive != null">
+			and a.is_active = #{query.isActive}
+		</if>
+		<if test="query != null and query.isActiveMin != null and query.isActiveMax == null">
+			and a.is_active <![CDATA[ >= ]]> #{query.isActiveMin}
+		</if>
+		<if test="query != null and query.isActiveMin == null and query.isActiveMax != null">
+			and a.is_active <![CDATA[ <= ]]> #{query.isActiveMax}
+		</if>
+		<if test="query != null and query.isActiveMin != null and query.isActiveMax != null">
+			and a.is_active <![CDATA[ >= ]]> #{query.isActiveMin} and is_active <![CDATA[ <= ]]> #{query.isActiveMax}
+		</if>
+
+	</sql>
+
     <select id="getById" parameterType="long" resultType="articleDO">
         select
         a.*, ac.title as categoryName
@@ -419,14 +531,14 @@
 		from t_article a
 		inner join t_article_category ac on a.category_id = ac.id
 		<where>
-			<include refid="query_where_clause"/>
+			<include refid="user_query_where_clause"/>
 		</where>
 		order by
 		<if test="query.sortColumn != null and query.sortColumn != ''">
 			${query.sortColumn} ${query.sortOrder}
 		</if>
 		<if test="query.sortColumn == null or query.sortColumn == ''">
-			update_time desc, create_time desc
+			a.update_time desc, a.create_time desc
 		</if>
 		limit #{query.beginIndex}, #{query.pageSize}
 	</select>

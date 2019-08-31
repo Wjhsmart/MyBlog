@@ -19,13 +19,12 @@
         <span class="au02" th:text="${#dates.format(articleVO.updateTime, 'yyyy-MM-dd')}">发布时间</span>
         <span class="au03">共
           <b>
-            <script src="/e/public/ViewClick/?classid=5&amp;id=816&amp;addclick=1"></script>
             <span th:text="${articleVO.viewCount}">0</span>
           </b>人围观
         </span>
       </div>
       <div class="tags">
-        <a href="@{/list(pageNo=${pageNo},categoryId=${articleVO.categoryId})}" th:text="${articleVO.categoryName}">默认分类</a> &nbsp;
+        <a th:href="@{/list(pageNo=${pageNo},categoryId=${articleVO.categoryId})}" th:text="${articleVO.categoryName}">默认分类</a> &nbsp;
       </div>
       <!--<div class="news_about"><strong>简介</strong>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</div>-->
       <div class="news_infos">
@@ -34,8 +33,7 @@
     </div>
     <div class="share"> </div>
     <div class="nextinfo">
-      <p>上一篇：<a href="/news/life/2018-03-13/804.html">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a></p>
-      <p>下一篇：<a href="/news/life/">返回列表</a></p>
+      <p><a href="list">返回列表</a></p>
     </div>
     <div class="otherlink">
       <h2>相关文章</h2>

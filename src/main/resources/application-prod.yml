@@ -1,0 +1,74 @@
+server:
+  port: 80
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: MyBlog
+  banner:
+    charset: UTF-8
+    location: banner.txt
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/my_blog?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false&allowMultiQueries=true&useAffectedRows=true&allowPublicKeyRetrieval=true
+      username: root
+      password: Root123456
+      validation-query: select 1
+      max-active: 100
+      min-idle: 10
+      max-wait: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      initial-size: 10
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+  redis:
+    database: 3
+logging:
+  file:
+    max-history: 60
+  level:
+    root: INFO
+  path: .
+  pattern:
+    console: "%date %level %thread %10logger %file %line %msg%n"
+    file: "%date %level %thread %10logger %file %line %msg%n"
+    level: "%5p"
+  register-shutdown-hook: false
+mybatis:
+  configuration:
+    cache-enabled: true
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+    use-column-label: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.zywork.dos
+  mapper-locations: classpath:/mapper/*Mapper.xml
+storage:
+  #上传方式，可选local, aliyun-oss, qiniu-oss
+  provider: local
+  #配置本地上传保存目录及url
+  local:
+    compressSizes: "800x600,600x400"
+    compressScales: "0.8,0.5"
+    ueditor:
+      imgParentDir: "."
+      imgDir: "image/ueditor"
+      imgUrl: "upload/image/ueditor"

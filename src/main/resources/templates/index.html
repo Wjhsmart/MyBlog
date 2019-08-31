@@ -8,56 +8,71 @@
 <div th:replace="common/header :: header"></div>
 <div class="picshow">
   <ul>
-    <li><a href="/"><i><img src="images/b01.jpg"></i>
+    <li>
+      <a href="https://www.yangqq.com/download/div/2018-05-08/850.html" target="_blank">
+        <i><img src="images/b01.jpg"></i>
       <div class="font">
         <h3>个人博客模板《早安》</h3>
       </div>
-      </a></li>
-    <li><a href="/"><i><img src="images/b02.jpg"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.yangqq.com/download/div/2018-05-08/850.html" target="_blank">
+        <i><img src="images/b02.jpg"></i>
       <div class="font">
         <h3>个人博客模板《早安》</h3>
       </div>
-      </a></li>
-    <li><a href="/"><i><img src="images/b03.jpg"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.yangqq.com/download/div/2018-05-08/850.html" target="_blank">
+      <i><img src="images/b03.jpg"></i>
       <div class="font">
         <h3>个人博客模板《早安》</h3>
       </div>
-      </a></li>
-    <li><a href="/"><i><img src="images/b04.jpg"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.yangqq.com/download/div/2018-05-08/850.html" target="_blank">
+        <i><img src="images/b04.jpg"></i>
       <div class="font">
         <h3>个人博客模板《早安》</h3>
       </div>
-      </a></li>
-    <li><a href="/"><i><img src="images/b05.jpg"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.yangqq.com/download/div/2018-05-08/850.html" target="_blank">
+      <i><img src="images/b05.jpg"></i>
       <div class="font">
         <h3>个人博客模板《早安》</h3>
       </div>
-      </a></li>
+      </a>
+    </li>
   </ul>
 </div>
 <article>
   <div class="blogs">
     <li th:each="article,articleStat : ${articleIndexList}">
       <span class="blogpic">
-        <a href="/">
+        <a th:href="@{/detail(id=${article.id})}">
           <img th:src="@{${article.coverImg}}" src="images/text01.jpg">
         </a>
       </span>
       <h3 class="blogtitle"><a href="/" th:text="${article.title}">默认标题</a></h3>
       <div class="bloginfo">
         <p>
-          <span th:text="${#strings.substring(article.summary,0,100) + ',...'}">默认简介</span>
+          <span th:text="${#strings.substring(article.summary,0,100) + '，......'}">默认简介</span>
         </p>
       </div>
       <div class="autor">
         <span class="lm">
-          <a href="/" th:title="${article.categoryName}" class="classname" th:text="${article.categoryName}">默认类型</a>
+          <a th:href="@{/list(pageNo=${pageNo},categoryId=${article.categoryId})}" th:title="${article.categoryName}" class="classname" th:text="${article.categoryName}">默认类型</a>
         </span>
         <span class="dtime" th:text="${#dates.format(article.updateTime, 'yyyy-MM-dd')}">发布时间</span>
-        <span class="viewnum">浏览（<a href="/" th:text="${article.viewCount}">0</a>）</span>
-        <span class="commentnum">评论（<a href="/" th:text="${article.commentCount}">0</a>）</span>
+        <span class="viewnum">浏览（<a th:href="@{/detail(id=${article.id})}" th:text="${article.viewCount}">0</a>）</span>
+        <span class="commentnum">评论（<a th:href="@{/detail(id=${article.id})}" th:text="${article.commentCount}">0</a>）</span>
         <span class="readmore">
-          <a href="/">阅读原文</a>
+          <a th:href="@{/detail(id=${article.id})}">阅读原文</a>
         </span>
       </div>
     </li>
@@ -99,5 +114,6 @@
 <div class="blank"></div>
 <div th:replace="common/footer :: footer"></div>
 <script src="js/nav.js"></script>
+
 </body>
 </html>

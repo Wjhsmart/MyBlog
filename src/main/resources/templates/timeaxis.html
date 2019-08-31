@@ -30,7 +30,10 @@
               <a href="#nogo" th:text="${timeaxis.yearColumn} + '年'">年</a>
             </h2>
             <li th:class="${timeaxisDetail.recommend == 1 ? 'green' : ''}" th:each="timeaxisDetail,timeaxisDetailStat : ${timeaxis.rows}">
-              <h3 th:text="${timeaxisDetail.monthColumn}">MM.dd<span th:text="${timeaxis.yearColumn} + '年'">YYYY</span></h3>
+              <h3>
+                <b th:text="${timeaxisDetail.monthColumn}"></b>
+                <span th:text="${timeaxis.yearColumn}">YYYY</span>
+              </h3>
               <dl>
                 <dt th:text="${timeaxisDetail.title}">
                   标题

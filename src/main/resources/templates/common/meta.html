@@ -28,5 +28,18 @@
     </script>
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/xcConfirm.js"></script>
+    <script src="js/search.js"></script>
+    <script th:inline="javascript">
+        $(function () {
+            //许传入类似案例的json对象
+            $("#myInput").wy_inselect([[${searchVOList}]]);
+            $('#mySearchBtn').bind('click',function(){
+                var title = $("#inputVal").val();
+                var pageNo = [[${pageNo}]] == null ? 1 : [[${pageNo}]];
+                var categoryId = [[${categoryId}]] == null ? 0 : [[${categoryId}]];
+                window.location.href = "/list?pageNo="+pageNo+"&categoryId="+categoryId+"&title=" + title;
+            })
+        });
+    </script>
 </head>
 </html>

@@ -10,6 +10,7 @@
     <span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span>
     <a href="/" class="n1">网站首页</a>
     <a href="list" class="n2">学无止境</a>
+    <a href="javascript:;" onclick="writeBolg()" >写博客</a>
   </h1>
   <div class="category" th:if="${categoryId != 0}" th:text="${categoryName}">默认分类</div>
   <div class="blogs">
@@ -20,21 +21,23 @@
           <img th:src="@{${article.coverImg}}" src="images/text01.jpg">
         </a>
       </span>
-      <h3 class="blogtitle"><a th:href="@{/detail(id=${article.id})}" th:text="${article.title}">默认标题</a></h3>
+      <h3 class="blogtitle">
+        <a th:href="@{/detail(id=${article.id})}" th:text="${article.title}">默认标题</a>
+      </h3>
       <div class="bloginfo">
         <p>
-          <span th:text="${article.summary}">默认简介</span>
+          <span th:text="${#strings.substring(article.summary,0,100) + '，......'}">默认简介</span>
         </p>
       </div>
       <div class="autor">
         <span class="lm">
-          <a href="/" th:title="${article.categoryName}" class="classname" th:text="${article.categoryName}">默认类型</a>
+          <a th:href="@{/list(pageNo=${pageNo},categoryId=${article.categoryId})}" th:title="${article.categoryName}" class="classname" th:text="${article.categoryName}">默认类型</a>
         </span>
         <span class="dtime" th:text="${#dates.format(article.updateTime, 'yyyy-MM-dd')}">发布时间</span>
-        <span class="viewnum">浏览（<a href="/" th:text="${article.viewCount}">0</a>）</span>
-        <span class="commentnum">评论（<a href="/" th:text="${article.commentCount}">0</a>）</span>
+        <span class="viewnum">浏览（<a th:href="@{/detail(id=${article.id})}" th:text="${article.viewCount}">0</a>）</span>
+        <span class="commentnum">评论（<a th:href="@{/detail(id=${article.id})}" th:text="${article.commentCount}">0</a>）</span>
         <span class="readmore">
-          <a href="/">阅读原文</a>
+          <a th:href="@{/detail(id=${article.id})}">阅读原文</a>
         </span>
       </div>
     </li>
@@ -69,5 +72,16 @@
 </article>
 <div th:replace="common/footer :: footer"></div>
 <script src="js/nav.js"></script>
+<script type="text/javascript">
+  function writeBolg() {
+    var resp = window.prompt("请输入密码","请在此输入密码");
+    if (resp != "admin") {
+      var txt=  "密码错误";
+      window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.error);
+      return;
+    }
+
+  }
+</script>
 </body>
 </html>
